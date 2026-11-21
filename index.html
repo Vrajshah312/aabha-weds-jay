@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" class="is-locked">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Aabha Weds Jay</title>
+  
+  <!-- Browser Favicon / Tab Logo -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/media/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/media/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/media/apple-touch-icon.png">
+  
+  <!-- Premium Fonts Matching ShubhWeds -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="is-locked">
+
+  <!-- Background Music from Video -->
+  <audio id="wedding-audio" src="assets/media/wedding_music.mp3" loop preload="auto"></audio>
+
+  <!-- Persistent Floating Music Button (Like ShubhWeds) -->
+  <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">
+    <div class="vinyl-record">
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-center">♫</div>
+    </div>
+  </button>
+
+  <!-- SCREEN 1: Fullscreen Hero Section (Door + Ganesha + Aabha Weds Jay + Scroll Cue) -->
+  <section class="hero-screen" id="hero-screen">
+    <div class="hero-stage">
+      
+      <!-- Video Player (Door Opening & Lord Ganesha) -->
+      <video id="invitation-video" class="invitation-video" playsinline preload="auto" poster="assets/media/gate_poster.jpg">
+        <source src="assets/media/door_and_ganesha.mp4" type="video/mp4">
+      </video>
+
+      <!-- Initial Closed Door -->
+      <div class="door-poster" id="door-poster">
+        <img src="assets/media/gate_poster.jpg" alt="Door" class="door-img">
+      </div>
+
+      <!-- Plaque: Aabha Weds Jay with Pristine Peacock Frame -->
+      <div class="couple-screen" id="couple-screen">
+        <div class="peacock-theme-card">
+          <div class="couple-content">
+            <h1 class="couple-name bride">Aabha</h1>
+            <div class="weds-badge">
+              <span class="weds-flourish">❦</span>
+              <span class="weds-text">weds</span>
+              <span class="weds-flourish">❦</span>
+            </div>
+            <h1 class="couple-name groom">Ja<span class="name-y">y</span></h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- ShubhWeds Scroll Down Cue -->
+      <a href="#first-page" class="hero-scroll-cue" id="hero-scroll-cue">
+        <span class="cue-text">Scroll Down</span>
+        <span class="cue-arrow">↓</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SCREEN 2: First Page (Exact ShubhWeds Template-3 Structure & Aesthetics) -->
+  <section class="section invite-section" id="first-page">
+    <div class="card invite__card">
+      
+      <!-- Sacred ॐ Symbol -->
+      <div class="invite__onkar" data-reveal="up">ॐ</div>
+
+      <!-- Lord Ganesha Shloka -->
+      <p class="invite__shabad" data-reveal="up" style="transition-delay: 0.15s">
+        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
+        निर्विघ्नं कुरु मे देव शुभ कार्येषु सर्वदा॥
+      </p>
+
+      <!-- "We Cordially Invite You" Heading -->
+      <h2 class="invite__heading" data-reveal="up" style="transition-delay: 0.3s">
+        We Cordially Invite You
+      </h2>
+
+      <!-- Lead Copy -->
+      <p class="invite__lead" data-reveal="up" style="transition-delay: 0.45s">
+        Together with our beloved families,<br>
+        we request the honour of your gracious<br>
+        presence to celebrate the wedding of
+      </p>
+
+      <!-- Bride Details -->
+      <div class="invite__person" data-reveal="up" style="transition-delay: 0.6s">
+        <h1 class="invite__name">Aabha</h1>
+        <p class="invite__relation">Daughter of</p>
+        <p class="invite__parents">
+          Smt. Meenakshi Verma &amp; Shri Rajesh Verma
+        </p>
+      </div>
+
+      <!-- "With" Separator -->
+      <div class="invite__with" data-reveal="up" style="transition-delay: 0.75s">
+        With
+      </div>
+
+      <!-- Groom Details -->
+      <div class="invite__person" data-reveal="up" style="transition-delay: 0.9s">
+        <h1 class="invite__name" style="margin-bottom:0;">Ja<span class="name-y">y</span></h1>
+        <p class="invite__relation" style="margin-top:0;">Son of</p>
+        <p class="invite__parents">
+          Smt. Sunita Sharma &amp; Shri Rakesh Sharma
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCREEN 3: Scratch Heart Section -->
+  <section class="section scratch-section" id="scratch-section">
+    
+    <!-- Floating Gold Flecks/Sparks -->
+    <div class="sparks-container" id="sparks" aria-hidden="true"></div>
+
+    <!-- Section Heading -->
+    <div class="scratch__head" data-reveal="up">
+      <p class="scratch__eyebrow">A SPECIAL SURPRISE</p>
+      <h2 class="scratch__title">SCRATCH THE HEART TO REVEAL OUR WEDDING DATE</h2>
+    </div>
+
+    <!-- Scratch Heart Stage -->
+    <div class="scratch__stage" data-reveal="up" style="transition-delay: 0.2s">
+      <div class="scratch__card">
+        
+        <!-- Layer A: White heart paper card backdrop -->
+        <svg class="scratch__heart-bg" viewBox="0 0 100 90">
+          <path d="M 50,86 C 14,56 4,38 4,24 C 4,11 14,4 27,4 C 36,4 45,9 50,18 C 55,9 64,4 73,4 C 86,4 96,11 96,24 C 96,38 86,56 50,86 Z" fill="#ffffff" />
+        </svg>
+
+        <!-- Layer B: Hidden revealed date text -->
+        <div class="scratch__date" id="scratch-date">
+          <span class="scratch__date-day">14</span>
+          <span class="scratch__date-month">FEBRUARY</span>
+          <span class="scratch__date-year">2027</span>
+        </div>
+
+        <!-- Layer C: Gold Foil Canvas with Heart Clip-Path -->
+        <div class="scratch__foil-wrap">
+          <canvas class="scratch__foil" id="scratch-foil"></canvas>
+          <div class="scratch__shimmer" id="scratch-shimmer" hidden></div>
+        </div>
+
+        <!-- Layer D: Elegant gold stroke border outline -->
+        <svg class="scratch__heart-line" viewBox="0 0 100 90">
+          <path d="M 50,86 C 14,56 4,38 4,24 C 4,11 14,4 27,4 C 36,4 45,9 50,18 C 55,9 64,4 73,4 C 86,4 96,11 96,24 C 96,38 86,56 50,86 Z" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linejoin="round" />
+        </svg>
+
+        <!-- Layer E: Confetti explosion canvas on reveal -->
+        <canvas class="scratch__confetti" id="scratch-confetti"></canvas>
+      </div>
+
+      <!-- Interactive Hint with Animated Swiping Hand -->
+      <div class="scratch__hint" id="scratch-hint">
+        <p class="scratch__hint-text">Scratch to reveal</p>
+        <div class="scratch__hand" id="scratch-hand" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 14a8 8 0 0 1-8 8"></path>
+            <path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2"></path>
+            <path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1"></path>
+            <path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10"></path>
+            <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG ClipPath Definition with padding buffer -->
+    <svg width="0" height="0" style="position: absolute;">
+      <defs>
+        <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+          <path d="M 0.5,0.955 C 0.14,0.622 0.04,0.422 0.04,0.267 C 0.04,0.122 0.14,0.044 0.27,0.044 C 0.36,0.044 0.45,0.1 0.5,0.2 C 0.55,0.1 0.64,0.044 0.73,0.044 C 0.86,0.044 0.96,0.122 0.96,0.267 C 0.96,0.422 0.86,0.622 0.5,0.955 Z" />
+        </clipPath>
+      </defs>
+    </svg>
+  </section>
+
+  <!-- SCREEN 4: Countdown Section (Exact ShubhWeds Countdown Component) -->
+  <section class="section countdown-section" id="countdown-section">
+    <h2 class="section__title" data-reveal="up">The Big Day Approaches</h2>
+
+    <div
+      class="countdown__grid"
+      id="countdown"
+      data-countdown="2027-02-14T19:00:00"
+      data-reveal="zoom"
+    >
+      <div class="countdown__cell">
+        <div class="countdown__box">
+          <span class="countdown__value" id="cd-days">00</span>
+        </div>
+        <span class="countdown__label">Days</span>
+      </div>
+      <div class="countdown__cell">
+        <div class="countdown__box">
+          <span class="countdown__value" id="cd-hours">00</span>
+        </div>
+        <span class="countdown__label">Hours</span>
+      </div>
+      <div class="countdown__cell">
+        <div class="countdown__box">
+          <span class="countdown__value" id="cd-minutes">00</span>
+        </div>
+        <span class="countdown__label">Minutes</span>
+      </div>
+      <div class="countdown__cell">
+        <div class="countdown__box">
+          <span class="countdown__value" id="cd-seconds">00</span>
+        </div>
+        <span class="countdown__label">Seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 5: Wedding Events - Mehndi Ceremony with AI Video -->
+  <section class="section events" id="events-section">
+    <h2 class="section__title" data-reveal="up">Wedding Festivities</h2>
+
+    <div class="events__list">
+      <article class="event" data-reveal="up">
+        <header class="event__header">
+          <h3 class="event__name">Mehndi</h3>
+          <p class="event__date">12<sup>th</sup> February 2027</p>
+          <p class="event__time">Friday &bull; 12 PM Onwards</p>
+        </header>
+
+        <!-- AI Generated Video for Mehndi -->
+        <video
+          class="event__video"
+          src="assets/media/mehendi_clip.mp4"
+          poster="assets/media/mehendi_poster.jpg"
+          aria-label="Mehndi Ceremony"
+          muted
+          loop
+          playsinline
+          autoplay
+        ></video>
+
+        <footer class="event__venue">
+          <p class="event__venue-label">Venue</p>
+          <p class="event__venue-name">The Grand Zora Palace</p>
+          <p class="event__street">Surat, Gujarat</p>
+          <p class="event__country">India</p>
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=Surat+Gujarat"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            View on Maps
+          </a>
+        </footer>
+      </article>
+
+      <!-- Haldi Ceremony Card (Skipped Sangeet directly to Haldi) -->
+      <article class="event" data-reveal="up">
+        <header class="event__header">
+          <h3 class="event__name">Haldi</h3>
+          <p class="event__date">13<sup>th</sup> February 2027</p>
+          <p class="event__time">Saturday &bull; 10 AM Onwards</p>
+        </header>
+
+        <!-- AI Generated Video for Haldi (Scooter Entrance) -->
+        <video
+          class="event__video"
+          src="assets/media/haldi_clip.mp4"
+          poster="assets/media/haldi_poster.jpg"
+          aria-label="Haldi Ceremony"
+          muted
+          loop
+          playsinline
+          autoplay
+        ></video>
+
+        <footer class="event__venue">
+          <p class="event__venue-label">Venue</p>
+          <p class="event__venue-name">The Grand Zora Palace</p>
+          <p class="event__street">Surat, Gujarat</p>
+          <p class="event__country">India</p>
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=Surat+Gujarat"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            View on Maps
+          </a>
+        </footer>
+      </article>
+
+      <!-- Wedding Ceremony / Phera Card -->
+      <article class="event" data-reveal="up">
+        <header class="event__header">
+          <h3 class="event__name">Wedding Ceremony</h3>
+          <p class="event__date">14<sup>th</sup> February 2027</p>
+          <p class="event__time">Sunday &bull; 7 PM Onwards</p>
+        </header>
+
+        <!-- AI Generated Video for Wedding / Sacred Phera -->
+        <video
+          class="event__video"
+          src="assets/media/wedding_clip.mp4"
+          poster="assets/media/wedding_poster.jpg"
+          aria-label="Wedding Ceremony &amp; Sacred Phera"
+          muted
+          loop
+          playsinline
+          autoplay
+        ></video>
+
+        <footer class="event__venue">
+          <p class="event__venue-label">Venue</p>
+          <p class="event__venue-name">The Grand Zora Palace</p>
+          <p class="event__street">Surat, Gujarat</p>
+          <p class="event__country">India</p>
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=Surat+Gujarat"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              aria-hidden="true"
+            >
+              <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" />
+              <circle cx="12" cy="10" r="2.5" />
+            </svg>
+            View on Maps
+          </a>
+        </footer>
+      </article>
+    </div>
+  </section>
+
+  <!-- SCREEN 6: With Blessings From Section -->
+  <section class="section blessings-section" id="blessings-section">
+    <div class="blessings__card" data-reveal="up">
+      <!-- Ornate Arch Background -->
+      <img
+        class="blessings__bg"
+        src="assets/media/blessings_arch_clean.jpg"
+        alt="Ornate Lotus Arch"
+        loading="lazy"
+      />
+
+      <!-- Content Stage overlaid seamlessly within arch -->
+      <div class="blessings__content">
+        <div class="blessings__header">
+          <p class="blessings__subheading">WITH REVERENCE &amp; GRATITUDE</p>
+          <h2 class="blessings__title">With Blessings From</h2>
+          <div class="blessings__divider">
+            <span></span>
+            <svg class="blessings__lotus-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3c-1.5 3-4 6-7 7 3 1 5.5 3.5 7 9 1.5-5.5 4-8 7-9-3-1-5.5-4-7-7z"/>
+            </svg>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="blessings__body">
+          <p class="blessings__quote">
+            &ldquo;As we embark on this sacred journey of eternal love and togetherness, we seek the heartfelt blessings of our elders and the affectionate wishes of our family &amp; friends.&rdquo;
+          </p>
+
+          <div class="blessings__groups">
+            <div class="blessings__group">
+              <h4 class="blessings__group-title">Grandparents &amp; Elders</h4>
+              <p class="blessings__names">
+                Late Smt. Shanti Devi &amp; Late Shri Ramcharan Sharma<br />
+                Smt. Savitri Devi &amp; Shri Hariprasad Verma
+              </p>
+            </div>
+
+            <div class="blessings__group">
+              <h4 class="blessings__group-title">With Best Compliments &amp; Warm Wishes</h4>
+              <p class="blessings__family-name">Sharma &amp; Verma Families</p>
+              <p class="blessings__kinship">Near &amp; Dear Ones &bull; Relatives &amp; Friends</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 7: Thank You Footer Section -->
+  <footer class="thankyou-footer" id="thankyou-footer">
+    <div class="thankyou__inner" data-reveal="up">
+      <!-- Ornate Couple Monogram Crest -->
+      <div class="thankyou__crest">
+        <div class="thankyou__monogram">
+          <span class="mono-letter">A</span>
+          <span class="mono-amp">&amp;</span>
+          <span class="mono-letter">J</span>
+        </div>
+      </div>
+
+      <p class="thankyou__eyebrow">A NEW BEGINNING</p>
+      <h2 class="thankyou__title">Thank You!</h2>
+      <p class="thankyou__message">
+        Your presence, love, and prayers make our special day complete.<br />
+        We can&rsquo;t wait to celebrate our union with you!
+      </p>
+
+      <div class="thankyou__hashtag">
+        <span>#AabhaWedsJay</span>
+      </div>
+
+      <div class="thankyou__divider">
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="currentColor" class="thankyou__heart-icon">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span></span>
+      </div>
+
+      <p class="thankyou__copyright">
+        Handcrafted with love for Aabha &amp; Jay &bull; February 2027
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
