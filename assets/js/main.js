@@ -8,49 +8,84 @@ document.addEventListener('DOMContentLoaded', () => {
   const musicToggle = document.getElementById('music-toggle');
 
   let hasStarted = false;
+  let hasTransitioned = false;
 
   // Initialize Scroll Reveal Observer (Exact ShubhWeds mechanism)
   initScrollReveal();
 
-  const handleStart = () => {
+  const finishDoorAnimation = () => {
+    if (hasTransitioned) return;
+    hasTransitioned = true;
+
+    // 1. Reveal Aabha Weds Jay plaque screen
+    if (coupleScreen) coupleScreen.classList.add('active');
+
+    // 2. Unlock scrolling (just like ShubhWeds)
+    document.documentElement.classList.remove('is-locked');
+    document.body.classList.remove('is-locked');
+
+    // 3. Reveal the "Scroll Down ↓" button smoothly
+    setTimeout(() => {
+      if (scrollCue) scrollCue.classList.add('visible');
+    }, 600);
+  };
+
+  const handleStart = (e) => {
     if (hasStarted) return;
     hasStarted = true;
 
-    // Start background wedding music
+    // Start background wedding music (unlocked on this direct user gesture)
     if (audio) {
       audio.volume = 0.7;
-      audio.play().then(() => {
-        musicToggle.classList.add('playing');
-      }).catch(e => console.log('Audio autoplay:', e));
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (musicToggle) musicToggle.classList.add('playing');
+        }).catch(err => {
+          console.warn('Audio play error:', err);
+        });
+      }
     }
 
-    // Hide initial static door
-    poster.classList.add('hidden');
+    // Hide initial static door immediately
+    if (poster) poster.classList.add('hidden');
 
-    // Play door opening + Lord Ganesha video
-    video.currentTime = 0;
-    video.play().catch(err => {
-      console.log('Video error:', err);
-    });
+    if (video) {
+      // Ensure muted and playsinline attributes for 100% mobile browser approval
+      video.muted = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.currentTime = 0;
 
-    // When the Lord Ganesha scene finishes (at ~10.5s):
-    video.addEventListener('ended', () => {
-      // 1. Reveal Aabha Weds Jay plaque screen
-      coupleScreen.classList.add('active');
+      const videoPromise = video.play();
+      if (videoPromise !== undefined) {
+        videoPromise.catch(err => {
+          console.warn('Mobile video autoplay prevented, transitioning to couple plaque:', err);
+          finishDoorAnimation();
+        });
+      }
 
-      // 2. Unlock scrolling (just like ShubhWeds)
-      document.documentElement.classList.remove('is-locked');
-      document.body.classList.remove('is-locked');
+      // Check when video ends normally
+      video.addEventListener('ended', finishDoorAnimation);
 
-      // 3. Reveal the "Scroll Down ↓" button smoothly
-      setTimeout(() => {
-        scrollCue.classList.add('visible');
-      }, 600);
-    });
+      // Fallback timeout in case mobile browser hangs on ended event (video duration is 10.5s)
+      setTimeout(finishDoorAnimation, 11500);
+    } else {
+      finishDoorAnimation();
+    }
   };
 
-  container.addEventListener('click', handleStart);
-  container.addEventListener('touchstart', handleStart, { passive: true });
+  // Attach touch and click events across container, poster, and video
+  if (container) {
+    container.addEventListener('click', handleStart);
+    container.addEventListener('touchstart', handleStart, { passive: true });
+    container.addEventListener('pointerdown', handleStart);
+  }
+  if (poster) {
+    poster.addEventListener('click', handleStart);
+    poster.addEventListener('touchstart', handleStart, { passive: true });
+    poster.addEventListener('pointerdown', handleStart);
+  }
 
   // Floating Music Toggle
   musicToggle.addEventListener('click', (e) => {
