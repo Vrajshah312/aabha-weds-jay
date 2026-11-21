@@ -460,3 +460,98 @@ function initEventVideos() {
 }
 
 window.addEventListener('DOMContentLoaded', initEventVideos);
+
+/* ==========================================================================
+   ShubhWeds 3D Carousel for "Our Story" Section
+   ========================================================================== */
+function initStoryCarousel() {
+  const container = document.getElementById('carousel');
+  if (!container) return;
+
+  const slides = Array.prototype.slice.call(container.children);
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  let timer = null;
+  const interval = 3500;
+  const swipeThreshold = 50;
+
+  function update() {
+    slides.forEach((slide, idx) => {
+      let diff = idx - currentIndex;
+      if (diff > 1) diff -= slides.length;
+      if (diff < -1) diff += slides.length;
+
+      slide.classList.toggle('is-current', diff === 0);
+      slide.classList.toggle('is-next', diff === 1);
+      slide.classList.toggle('is-prev', diff === -1);
+    });
+  }
+
+  function advance(step) {
+    currentIndex = (currentIndex + step + slides.length) % slides.length;
+    update();
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    timer = setInterval(() => advance(1), interval);
+  }
+
+  function stopAutoplay() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  // Autoplay only when carousel is visible in viewport
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startAutoplay();
+      } else {
+        stopAutoplay();
+      }
+    }, { threshold: 0.2 }).observe(container);
+  } else {
+    startAutoplay();
+  }
+
+  // Pointer drag and touch swipe support
+  let startX = null;
+
+  container.addEventListener('pointerdown', (e) => {
+    startX = e.clientX;
+    stopAutoplay();
+  });
+
+  container.addEventListener('pointerup', (e) => {
+    if (startX === null) return;
+    const diff = startX - e.clientX;
+    if (Math.abs(diff) > swipeThreshold) {
+      advance(diff > 0 ? 1 : -1);
+    }
+    startX = null;
+    startAutoplay();
+  });
+
+  container.addEventListener('pointerleave', () => {
+    if (startX !== null) {
+      startX = null;
+      startAutoplay();
+    }
+  });
+
+  // Clicking directly on prev or next photo navigates to it
+  slides.forEach((slide, idx) => {
+    slide.addEventListener('click', () => {
+      if (slide.classList.contains('is-next')) advance(1);
+      else if (slide.classList.contains('is-prev')) advance(-1);
+    });
+  });
+
+  update();
+}
+
+window.addEventListener('DOMContentLoaded', initStoryCarousel);

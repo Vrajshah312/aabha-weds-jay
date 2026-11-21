@@ -864,7 +864,148 @@ body::before {
 }
 
 /* ==========================================================================
-   Screen 5: Events - Mehndi Ceremony (AI Video & Exact ShubhWeds Frame)
+   Screen 5: Our Story (Interactive 3D Carousel & Exact ShubhWeds Styling)
+   ========================================================================== */
+
+.story-section {
+  background-color: var(--cream);
+  padding: clamp(4rem, 8vw, 6.5rem) 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.story__grid {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.story__col {
+  flex: 1;
+  width: 100%;
+}
+
+/* The three frames are stacked in one spot; .is-prev / .is-next slide the
+   neighbours out to either side. */
+.carousel {
+  --offset: 120px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 600px;
+  perspective: 1000px;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.carousel__slide {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  height: 480px;
+  padding: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(201, 162, 39, .35);
+  border-radius: 14px;
+  box-shadow: 0 14px 38px rgba(110, 31, 47, 0.08), 0 4px 14px rgba(201, 162, 39, 0.12);
+  cursor: grab;
+  opacity: 0;
+  z-index: 1;
+  transform: scale(.5);
+  transition: transform .6s cubic-bezier(.22, 1, .36, 1),
+              opacity .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.carousel__slide:active {
+  cursor: grabbing;
+}
+
+.carousel__slide::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  z-index: 10;
+  border: 1px solid rgba(201, 162, 39, .3);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.carousel__slide.is-current {
+  opacity: 1;
+  z-index: 3;
+  transform: translateX(0) scale(1);
+}
+
+.carousel__slide.is-next {
+  opacity: .55;
+  z-index: 2;
+  transform: translateX(var(--offset)) scale(.85);
+}
+
+.carousel__slide.is-prev {
+  opacity: .55;
+  z-index: 2;
+  transform: translateX(calc(var(--offset) * -1)) scale(.85);
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.story__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1.35rem;
+}
+
+.story__title {
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 8vw, 4.2rem);
+  font-weight: 400;
+  color: var(--maroon);
+  margin-bottom: 0.5rem;
+}
+
+.story__text p {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.75;
+  color: #3b2a2d;
+  opacity: .95;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .story__grid {
+    flex-direction: column;
+    text-align: center;
+  }
+  .carousel {
+    --offset: 65px;
+    height: 460px;
+  }
+  .carousel__slide {
+    width: 250px;
+    height: 380px;
+  }
+}
+
+/* ==========================================================================
+   Screen 6: Events - Mehndi Ceremony (AI Video & Exact ShubhWeds Frame)
    ========================================================================== */
 .events {
   background-color: #faf6ee;
